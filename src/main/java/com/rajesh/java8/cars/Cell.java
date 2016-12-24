@@ -5,6 +5,7 @@ public class Cell {
      * This is an unique identifier for the space
      */
     private String cellId;
+
     /**
      * This is part of the Geo Location or address of the Cell
      */
