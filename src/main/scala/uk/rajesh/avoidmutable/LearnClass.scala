@@ -51,3 +51,11 @@ class NonEmpty(element: Int, left: IntSet, right: IntSet) extends IntSet {
   override def toString = "{ "+ left + element + right + " }"
 }
 
+object Week4Example {
+  def main(args: Array[String]) {
+    val a : Array[NonEmpty] = Array(new NonEmpty(1, Empty, Empty))
+/*    val b : Array[IntSet] = a //Throws Compile error - Expression of Type Array[NonEmpty] does not conform to Array[Empty]
+    b(0) = Empty
+    val s : NonEmpty = a(0)*/
+  }
+}
