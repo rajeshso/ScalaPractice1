@@ -1,0 +1,4 @@
+submit fun_rajesh@yahoo.com lojVDzwFiexO3cwj
+sbt styleCheck
+sbt scalastyle
+scalastyle
