@@ -15,13 +15,13 @@ object Zero extends Nat {
 
   override def -(that: Nat): Nat = if (that.isZero) this else throw new IndexOutOfBoundsException("negative number reached")
 
-  override def predecessor: Nat = throw IndexOutOfBoundsException
+  override def predecessor: Nothing = throw new IndexOutOfBoundsException
 }
 
 class Succ(elem: Nat) extends Nat {
   override def isZero: Boolean = false
 
-  override def +(that: Nat): Nat = new Succ(this, )
+  override def +(that: Nat): Nat = ???
 
   override def -(that: Nat): Nat = if (that.isZero) this else elem - that.predecessor
 

@@ -1,7 +1,7 @@
 package uk.rajesh.avoidmutable
-import java.util.NoSuchElementException
 // Week 4 - Lecture 4.2 Functions as Objects - Define an object List with three functions
 // in it so that users can create lists of length 0-2 using syntax List(), List(1) and List(2, 3)
+/*
 trait List[T] {
   def isEmpty: Boolean
   def head : T
@@ -14,8 +14,8 @@ class Cons[T](val head : T, val tail : List[T]) extends List[T] {
 
 class Nil[T] extends List[T] {
   override def isEmpty: Boolean = true
-  override def tail: List[T] = throw NoSuchElementException
-  override def head: T = throw NoSuchElementException
+  override def tail: Nothing = throw new NoSuchElementException
+  override def head: Nothing = throw new NoSuchElementException
 }
 
 object List {
@@ -26,4 +26,4 @@ object List {
   //List()
   def apply[T]: List[T] = new Nil()
 
-}
+}*/

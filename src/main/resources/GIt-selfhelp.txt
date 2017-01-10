@@ -1,0 +1,189 @@
+e797240@L5C9QQ72 MINGW64 /c/FAST/eclipse/workspaces/git/captis (feature/springboot)
+$ git branch -u feature/springboot
+warning: Not setting branch feature/springboot as its own upstream.
+
+
+
+
+short cuts
+
+//Change directory to the git repo
+//Prefereably this should be entered in the C:\FAST\Git\etc\bash.bashrc file 
+$ cd /C/FAST/eclipse/workspaces/git/captisgit
+
+//configure notepad as editor
+git config --global core.editor "\"c:\FAST\Notepad++\6.8.8\notepad++.exe\""
+
+git config --global user.name "Rajesh Somasundaram"
+git config --global user.email "rajesh.x.somasundaram@jpmorgan.com"
+
+
+//switch branch to spring boot
+$ git branch -u feature/springboot
+
+//displays the url that was cloned from 
+$ git config --get remote.origin.url
+
+
+//display remote branches
+git branch -r
+
+//display local branches
+git branch
+
+
+by default, remote tracking is the branch that we cloned
+http://gitready.com/beginner/2009/03/09/remote-tracking-branches.html
+•They’re used to link what you’re working on locally compared to what’s on the remote.
+•They will automatically know what remote branch to get changes from when you use git pull or git fetch.
+•Even better, git status will recognize him how many commits you are in front of the remote version of the branch.
+
+//make current branch track the remote branch
+$ git branch -u refs/remotes/origin/develop
+Branch origin/develop set up to track remote branch refs/remotes/origin/develop from origin.
+http://stackoverflow.com/questions/520650/make-an-existing-git-branch-track-a-remote-branch
+
+
+// Find the remote branch that is tracked by the local branch
+$ git branch -vv
+
+// pulls data from the branch that we are tracking
+git pull
+
+
+Another option to switch branch
+$ git branch feature/DMSDC-6351
+$ git checkout feature/DMSDC-6351
+
+// create a local branch, track the remote branch
+$ git branch feature/DMSDC-6656-ConsensusAI
+$ git branch -u origin/feature/DMSDC-6656-ConsensusAI feature/DMSDC-6656-ConsensusAI
+$ git checkout feature/DMSDC-6351
+
+
+//Pull and overwrite local changes
+git fetch --all
+git reset --hard refs/heads/origin/develop
+git checkout refs/heads/origin/develop
+After checking out, go to git perspective -> git repositories -> captisgit -> branches-> local -> (the destination branch) -> right click and synchronize and checkout
+
+//Git checkout a new feature branch
+//create a new branch in the remote, for example origin/feature/DMSDC-6729-Negotiate-UI.
+// in the following command, the first file is a 
+git checkout -b feature/DMSDC-6729-Negotiate-UI origin/feature/DMSDC-6729-Negotiate-UI
+
+In vim, you can press i to start entering text and save by pressing esc and :wq and enter, this will commit with the message you typed. In your current state, to just come out without committing, you can do :q instead of the :wq as mentioned above.
+todo: find a way to configure notepad as the git editor
+
+// to check on what is the status of your local branch
+git status
+
+//to check the list of local commits
+git log
+
+//to list the files that are changed for a commit
+git diff-tree --no-commit-id --name-only -r c2814655590a60e644423cb97a639dbfce9c2bf7
+git ls-tree --name-only -r c2814655590a60e644423cb97a639dbfce9c2bf7
+http://stackoverflow.com/questions/424071/how-to-list-all-the-files-in-a-commit
+
+
+
+**** Escape routes ****
+
+//Throw away local commits in git
+git reset --hard origin/master 
+
+// Switch to an existing local branch
+$ git checkout testing
+
+//delete a local branch locally
+git branch -d the_local_branch
+
+//To HARD delete unpublished commits
+git log
+git reset --hard 0d1d7fc32 or whatever hash you see in the log
+
+//To untrack a local file
+git update-index --assume-unchanged captis-BDD/.project
+
+//To track a local file
+git update-index --no-assume-unchanged captis-BDD/.project
+
+//To find the name of files that have changed in remote
+git diff --name-only origin/feature/DMSDC-6351-Modularise-Taxonomy
+
+//Meaning and Definitions
+Fast Forward merge - This is default. If the master has not changed after your changes in the branch, you can opt this mode.
+
+//merge abort
+git merge --abort
+
+// If you miss to add the jira id
+1.	Eclipse-> Git Perspective
+2.	Git Repositories -> captis -> Branches-> Local-> <the name of the branch>
+3.	Right click -> Show in -> History
+4.	In the history, find the comment where you missed the jira id. Go down one commit below the jira-missing comment
+5.	<From here, you are entering a sensitive zone>
+6.	Right Click-> Rebase Interactive
+7.	In the list of commits, choose the reword for all the commits that require rewording.
+8.	Then, click Start
+9.	There will be popup windows, where you can edit the message. 
+10.	Don’t forget to add the jira id.
+11.	Keep moving with next
+12.	There will be a message to indicate that your rebase is successful
+In any of the steps, if you make mistakes, don’t worry. There is an abort button in the page to undo the half completed operation.
+Note:  There is also a bash way of doing this. But, that did not work for me. I think the eclipse-GUI is easier. I occasionally used the bash to do some untracking and resets.
+
+//helps to change the last commit.
+git commit –amend -m 'new message' 
+
+//When you see a dirty working tree in the merge or pull, do a manual fetch or pull
+//When you do a pull, there would be some files that would not be overwritten and hence would the operation would be aborted.
+//untrack those files or delete them (after backup)
+//Then do a git pull (prefer to do a git fetch and then a git merge)
+//Now the git would move to a merging state and eclipse would show the merging/conflict symbol
+// Resolve the conflict in eclipse compare tool. Move the resolved files to the staging area.
+// After completing the resolution, do a commit
+// Then, do a push upstream
+
+
+git merge refs/remotes/origin/develop --no-commit --ff
+//If the merge indicates a warning that warning refname 'origin/master' is ambiguous, then run the following command 
+$ git show-ref origin/develop
+//The above command would show you which of the develop branch to merge.
+
+
+Merge Tool colors
+Grey -> The changes you have made should be retained.
+Blue -> The changes made in the remote should overwrite local.
+Red  -> The conflict has to be resolved.
+Red
+
+//clean un tracked files
+git clean  -d  -fx "" --dry-run
+
+// list of files that have conflicts
+$ git diff --name-only --diff-filter=U
+
+//push to a different branch
+git push remote local_branch:remote_branch
+git push remote origin/feature/DMSDC-6729-Negotiate-UI:origin/feature/DMSDC-6656-ConsensusAI
+
+
+//Push the local branch to remote
+git push -u origin <branch>
+
+//Steps to merge branch to master
+Firstly, pull changes of master into branch
+git pull origin feature/DMSDC-6656-ConsensusAI
+
+
+//Tortoise GIT merge - If the merge tool in eclipse is not friendly or if the file is an excel or if the file is not a text file
+Select TortoiseGIT->Resolve Conflict
+There will be three files created - Base, Remote and the Local.
+Make manual changes to one file (Merge)
+Delete all other files.
+Mark the file as TortoiseGIT->Resolved.
+After making the change, refresh the eclipse workspace
+
+
