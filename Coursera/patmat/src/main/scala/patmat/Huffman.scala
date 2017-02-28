@@ -17,7 +17,9 @@ object Huffman {
     * leaves.
     */
   abstract class CodeTree
+
   case class Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) extends CodeTree
+
   case class Leaf(char: Char, weight: Int) extends CodeTree
 
 
@@ -26,6 +28,7 @@ object Huffman {
     case Leaf(_, weight: Int) => weight
     case Fork(_, _, _, weight: Int) => weight
   }
+
   def chars(tree: CodeTree): List[Char] = tree match {
     case Leaf(char: Char, weight: Int) => List(char)
     case Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) => chars
@@ -75,10 +78,10 @@ object Huffman {
 
   def times(chars:List[Char]):List[(Char, Int)] ={
     def timesAcc(chars:List[Char], acc: Map[Char, Int]) : Map[Char,Int] = chars match {
-      case Nil => println("testMe2 match empty list")
+      case Nil => //println("testMe2 match empty list")
         acc
-      case x::xs => println("testMe2 not empty List x:"+x+",xs:"+xs);
-        println("acc "+acc)
+      case x::xs => //println("testMe2 not empty List x:"+x+",xs:"+xs);
+        //println("acc "+acc)
         if (acc contains(x)) {
           val newAcc: Map[Char, Int] = acc.updated(x, acc(x)+1)
           timesAcc(xs,newAcc)
@@ -170,7 +173,7 @@ object Huffman {
   def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] = {
     //println( List(5,3,4,100).sortBy(x=>x))
     //println(freqs.sortBy(x=>x._2))
-    freqs.sortBy(x=>x._2).map(x => Leaf(x._1, x._2))
+    freqs.sortBy(x => x._2).map(x => Leaf(x._1, x._2))
   }
 
   /**
@@ -358,6 +361,7 @@ object Huffman {
     */
   def codeBits(table: CodeTable)(char: Char): List[Bit] = table.find(_._1 == char) match {
     case Some(code) => code._2
+    case _ => throw new IllegalArgumentException("asdas")
   }
 /*  def codeBits(table: CodeTable)(char: Char): List[Bit] = {
        table.filter( (code) => code._1 == char ).head._2
