@@ -78,10 +78,9 @@ object Huffman {
 
   def times(chars:List[Char]):List[(Char, Int)] ={
     def timesAcc(chars:List[Char], acc: Map[Char, Int]) : Map[Char,Int] = chars match {
-      case Nil => //println("testMe2 match empty list")
+      case Nil =>
         acc
-      case x::xs => //println("testMe2 not empty List x:"+x+",xs:"+xs);
-        //println("acc "+acc)
+      case x::xs =>
         if (acc contains(x)) {
           val newAcc: Map[Char, Int] = acc.updated(x, acc(x)+1)
           timesAcc(xs,newAcc)
@@ -94,74 +93,6 @@ object Huffman {
     a.toList
   }
 
-  /*  def testMe3(chars: List[Char]): Unit = {
-      def testMe3Acc(chars: List[Char], acc: Map[Char, Int]): Unit = chars match {
-        case Nil => println("testMe3 match empty list")
-        case x :: xs => println("testMe3 not empty List x:" + x + ",xs:" + xs); println("acc:" + acc); if (acc contains x) {
-          val tmpacc = acc.updated(x, acc(x) + 1); println("contains acc after add+" + tmpacc); testMe3Acc(xs, tmpacc)
-        } else {
-          println("not contains adding"); val tmpacc = acc + (x -> 1); print("acc after add:" + tmpacc); testMe3Acc(xs, tmpacc)
-        };
-      }
-      testMe3Acc(chars, Map())
-    }*/
-  /*
-      Attempt 1
-      def times(chars: List[Char]): List[(Char, Int)] = {
-        if (chars.isEmpty) Nil
-        val head = chars.head
-        val pair: (Char, Int) = (head, 1)
-        if (chars.tail.isEmpty)
-          List(pair)
-        else
-          pair :: times(chars.tail)
-      }*/
-
-  /*
-    Attempt 2
-    def times(chars: List[Char]): List[(Char, Int)] = {
-      def timesLoop(charsInternal: List[Char], acc : List[(Char, Int)]): List[(Char, Int)] = {
-        if (charsInternal.isEmpty) Nil
-        val head = charsInternal.head
-        val pair: (Char, Int) = (head, 1)
-        if (charsInternal.tail.isEmpty) {
-          println(acc.size)
-          List(pair)
-        }else {
-          println(acc.size)
-          //if the acc contains the char, update the tuple and continue the cycle
-          if (contains(pair, acc,false)) {
-            val v: List[(Char, Int)]  = update(pair, acc, List())
-            timesLoop(charsInternal.tail, v)
-          }
-          //if the acc does not contain the char, add the pair and continue the cycle
-          //pair :: timesLoop(charsInternal.tail, pair :: acc)
-          pair :: timesLoop(charsInternal.tail, List())
-        }
-        acc
-      }
-      def update(pair : (Char, Int), ip: List[(Char, Int)], op: List[(Char, Int)]) : List[(Char, Int)] = {
-        if (ip.isEmpty) op
-        val head : (Char, Int) = ip.head
-        if (pair._1 == head._1) {
-          val retOp : List[(Char, Int)] = (head._1, head._2+1) :: op
-          update(pair, ip.tail, retOp)
-        } else {
-          update(pair, ip.tail, op)
-        }
-      }
-      def contains(pair: (Char, Int), ip: List[(Char, Int)], found: Boolean) : Boolean = {
-        if (ip.isEmpty || found) found
-        val head : (Char, Int) = ip.head
-        if (head._1 == pair._1) contains(pair, ip, true)
-        else {
-          contains(pair, ip.tail, false)
-        }
-      }
-      val a : List[(Char, Int)] = List()
-      timesLoop(chars, a)
-    }
-  */
 
   /**
     * Returns a list of `Leaf` nodes for a given frequency table `freqs`.
@@ -171,22 +102,13 @@ object Huffman {
     * of a leaf is the frequency of the character.
     */
   def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] = {
-    //println( List(5,3,4,100).sortBy(x=>x))
-    //println(freqs.sortBy(x=>x._2))
     freqs.sortBy(x => x._2).map(x => Leaf(x._1, x._2))
   }
 
   /**
     * Checks whether the list `trees` contains only one single code tree.
     */
-  def singleton(trees: List[CodeTree]): Boolean = trees match {
-    case List() => false
-    case List(x) => x match {
-      case Fork(_, _, _, _) => false
-      case Leaf(_, _) => true
-    }
-    case x :: xs => false
-  }
+  def singleton(trees: List[CodeTree]): Boolean = trees.size == 1
 
   /**
     * The parameter `trees` of this function is a list of code trees ordered
@@ -200,38 +122,6 @@ object Huffman {
     * If `trees` is a list of less than two elements, that list should be returned
     * unchanged.
     */
-  /*
-    //Attempt 1
-    def combine(trees: List[CodeTree]): List[CodeTree] = {
-        val len = trees.length
-        if (len<2)
-          trees
-        else {
-          val treeLeft: CodeTree = trees.head
-          val treeRight: CodeTree = trees.tail.head
-          val charsL = treeLeft match {
-            case Leaf(c, i) => List((c, i))
-            case _ => List()
-          }
-          val charsR = treeRight match {
-            case Leaf(c, i) => List((c, i))
-            case _ => List()
-          }
-          val chars: List[Char] = charsL.head._1 :: charsR.head._1 :: Nil
-          val weight: Int = charsL.head._2 + charsR.head._2
-          val newFork: CodeTree = makeCodeTree(treeLeft,treeRight)
-          val list1 = trees.tail
-          if (list1.length == 1) {
-            List(newFork)
-          }
-          else {
-            val list_2 = list1.tail
-            val newList: List[CodeTree] = newFork :: list_2
-            newList
-          }
-        }
-      }*/
-
   def combine(trees: List[CodeTree]): List[CodeTree] = trees match {
     case left :: right :: cs => (makeCodeTree(left, right) :: cs)
     // .sortWith((t1, t2) => weight(t1) < weight(t2))
@@ -267,11 +157,7 @@ object Huffman {
     * The parameter `chars` is an arbitrary text. This function extracts the character
     * frequencies from that text and creates a code tree based on them.
     */
-  def createCodeTree(chars: List[Char]): CodeTree = {
-    val freq : List[(Char, Int)] = times(chars)
-    val orderedLeaves : List[Leaf] = makeOrderedLeafList(freq)
-    until(singleton, combine)(orderedLeaves).head
-  }
+  def createCodeTree(chars: List[Char]): CodeTree = until(singleton, combine)( makeOrderedLeafList(times(chars)) ).head
 
 
   // Part 3: Decoding
@@ -282,17 +168,6 @@ object Huffman {
     * This function decodes the bit sequence `bits` using the code tree `tree` and returns
     * the resulting list of characters.
     */
-/* My attempt
- def decode(tree: CodeTree, bits: List[Bit]): List[Char] = tree match {
-    case Leaf(c, _) => List(c)
-    case Fork(leftTree, rightTree, charList, _) => {
-      if (bits.isEmpty)
-        charList
-      else {
-        if (bits.head == 0) decode(leftTree, bits.tail) else decode(rightTree, bits.tail)
-      }
-    }
-  }*/
   def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
     def traverse(remaining: CodeTree, bits: List[Bit]): List[Char] = remaining match {
       case Leaf(c, _) if bits.isEmpty => List(c)
@@ -319,7 +194,7 @@ object Huffman {
   /**
     * Write a function that returns the decoded secret
     */
-  def decodedSecret: List[Char] = ???
+  def decodedSecret: List[Char] = decode(frenchCode, secret)
 
 
   // Part 4a: Encoding using Huffman tree
@@ -328,18 +203,6 @@ object Huffman {
     * This function encodes `text` using the code tree `tree`
     * into a sequence of bits.
     */
-  /*    def encode(tree: CodeTree)(text: List[Char]): List[Bit] = {
-        def lookup(internalTree: CodeTree)(charList: List[Char], acc : List[Bit]) : List[Bit] = charList match {
-          case Nil => acc
-          case x::xs => internalTree match {
-            case Leaf(c, i) => lookup(tree)(xs, acc)
-            case Fork(leftTree, _, _,_) if chars(leftTree).contains(x) => lookup(leftTree)(charList,acc:+0)
-            case Fork(_, rightTree, _,_) => lookup(rightTree)(charList, acc:+1)
-          }
-        }
-        lookup(tree)(text,List())
-      }*/
-
   def encode(tree: CodeTree)(text: List[Char]): List[Bit] = {
     def lookup(tree: CodeTree)(c: Char): List[Bit] = tree match {
       case Leaf(_, _) => List()
@@ -363,9 +226,6 @@ object Huffman {
     case Some(code) => code._2
     case _ => throw new IllegalArgumentException("asdas")
   }
-/*  def codeBits(table: CodeTable)(char: Char): List[Bit] = {
-       table.filter( (code) => code._1 == char ).head._2
-  }*/
 
   /**
     * Given a code tree, create a code table which contains, for every character in the

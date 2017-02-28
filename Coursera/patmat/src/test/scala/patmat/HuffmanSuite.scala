@@ -52,15 +52,25 @@ class HuffmanSuite extends FunSuite {
     assert(makeOrderedLeafList(List(('t', 2), ('e', 1), ('x', 3))) === List(Leaf('e',1), Leaf('t',2), Leaf('x',3)))
   }
 
-  test("non singleton(\"aba\")") {
+  test("singleton(\"aba\")") {
     val x1 : List[CodeTree] = List(Fork(Leaf('a',1),Leaf('b',2), List('a','b'), 3))
-    assert(singleton(x1) === false);
+    assert(singleton(x1) === true);
   }
 
-  test("singleton(\"aba\")") {
+  test("singleton(\"a\")") {
     val x1 : List[CodeTree] = List(Leaf('a',1))
     assert(singleton(x1) === true);
   }
+
+/*  ignore("non singleton(\"efgh\")") {
+    val x1 : List[CodeTree] = List(Fork(
+      Fork(Leaf('e',1),Leaf('f',1),List('e','f'),2),
+      Fork(Leaf('g',1),Leaf('h',1),List('g','h'),2),
+      List('e','f','g','h'),
+      4))
+    assert(singleton(x1) === false);
+  }*/
+
   test("combine of some leaf list") {
     val leaflist = List(Leaf('e', 1), Leaf('t', 2), Leaf('x', 4))
     assert(combine(leaflist) === List(Fork(Leaf('e',1),Leaf('t',2),List('e', 't'),3), Leaf('x',4)))
@@ -84,14 +94,6 @@ class HuffmanSuite extends FunSuite {
     val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
     assert(decode(t1,bits) == List('a'))
   }
-/*  ignore("decode t2 and find all") {
-    val bits : List[Bit] = List(0)
-    val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
-    assert(decode(t2,List(0)) == ('a'::'b'::Nil))
-    assert(decode(t2,List(1)) == ('d'::Nil))
-    assert(decode(t2,(0::0::Nil)) == ('a'::Nil))
-    assert(decode(t2,List(0,1)) == ('b'::Nil))
-  }*/
   test("encode for t1 and find b=1") {
     val bits : List[Bit] = List(1)
     val charList : List[Char] = List('b')
