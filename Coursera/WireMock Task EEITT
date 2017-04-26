@@ -1,0 +1,36 @@
+app.routes
+EEITTConnector.scala
+EEITTConnectorSpec.scala
+EtmpDataLoadProxySpec.scala
+ApplicationComponents.scala
+UserModeBinderSpec.scala
+application.conf
+
+
+
+
+  def respondWithSameText(payLoad: String): Unit = {
+    wireMockServer.stubFor(post(urlEqualTo("/etmp-data/dry-run/business-users"))
+      //.withHeader("Accept", equalTo("text/plain"))
+      //.withRequestBody(resp)
+      .willReturn(aResponse()
+      .withStatus(200)
+        //.withHeader("Content-Type", "text/plain")
+      //  .withBody(resp)
+      ));
+  }
+
+  def check(hmrcId: String) = {
+    wireMockServer.verify(postRequestedFor(urlEqualTo("http://localhost:8080/etmp-data/dry-run/business-users")))
+    //verify(postRequestedFor(urlMatching("localhost:8080/"+hmrcId))
+    //.withRequestBody(matching(resp))
+    //  .withHeader("Content-Type", matching("text/Plain"))
+    // );
+  }
+
+
+
+
+
+
+

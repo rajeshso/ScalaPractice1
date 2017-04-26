@@ -1,0 +1,79 @@
+Username
+rajesh.somasundaram@digital.hmrc.gov.uk
+
+How to list all installed packages ?
+apt list --installed 
+
+How to delete a directory that has files ?
+rm -rf commons-logging
+
+How to copy to the current directory?
+sudo cp backupOriginal/US_export_policy.jar .
+(Remember the dot)
+
+How to find the contents in a PATH environment variable ?
+echo $PATH
+
+How to install scala using apt-get ?
+https://gist.github.com/osipov/c2a34884a647c29765ed
+sudo apt-get remove scala-library scala
+sudo wget www.scala-lang.org/files/archive/scala-2.10.4.deb
+sudo dpkg -i scala-2.10.4.deb
+sudo apt-get update
+sudo apt-get install scala
+wget http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.12.4/sbt.deb
+sudo dpkg -i sbt.deb
+sudo apt-get update
+sudo apt-get install sbt
+
+
+How to Copy a file sshkey.pub from one location to another
+ cp -a sshkey.pub /home/rajesh/.ssh/
+ 
+
+Service Manager commands
+
+    sm -h
+        This shows all the commands available with helpful information about each of them
+
+    sm -s
+
+        This command shows the status of the services currently running on your system
+
+    sm --ports
+
+    sm --start [SERVICE NAME]
+
+    This command will run the specified service from its source code as it exists on your local machine
+    For example: sm --start CA_FRONTEND
+
+    sm --start [SERVICE_NAME] -f
+
+    This command will run the specified service or profile specified from the latest stable build in NEXUS. I.E. SNAPSHOT
+    For example: sm --start CA_FRONTEND -f
+
+    sm --stop [SERVICE NAME]
+
+    This command will stop the specified service
+    For example: sm --stop CA_FRONTEND
+
+--Start all except eeitt-frontend and backend using fresh binaries from nexus
+sm --start EEITT_DEP -f
+--Start all including eeitt-frontend and backend using fresh binaries from nexus
+sm --start EEITT_ALL -f
+--Start all except eeitt-frontend and backend using offline - from the local system
+sm --start EEITT_DEP -fo
+--Start all eeitt and backend using offline - from the local system
+sm --start EEITT_ALL -fo
+ 
+--stop services using the profile
+sm --stop EEITT_DEP
+
+
+--curl command to transfer data
+curl -v --url http://localhost:9190/eeitt-auth/etmp-data/business-users/dry-run --user dave:davespassword --header 'x-requested-with: bar' --data-binary '@/home/rajesh/Applications/sample'
+
+
+sudo add-apt-repository ppa:apandada1/brightness-controller
+sudo apt-get update
+sudo apt-get install brightness-controller
