@@ -2,14 +2,32 @@
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
-[0m[[0mdebug[0m] [0m	modified: Set()[0m
-[0m[[0mdebug[0m] [0mInvalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated products: Set(/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$4.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$3.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$8.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$18.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$2$$anon$2.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$10.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$12.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$6.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$2.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$16.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$5.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$1$$anon$1.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$15.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$13.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$TestTrees$class.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$1.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$17.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$14.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$18$$anon$3.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$11.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$7.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$$anonfun$9.class, /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes/patmat/HuffmanSuite$TestTrees.class)[0m
 [0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
-[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	product: Set(/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/src/test/scala/patmat/HuffmanSuite.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 38f58d81, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes:/home/rajesh/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/test-classes:/home/rajesh/Applications/ScalaPractice1/Coursera/patmat/target/scala-2.11/classes:/home/rajesh/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.4.jar:/home/rajesh/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.2.jar:/home/rajesh/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar:/home/rajesh/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar:/home/rajesh/.ivy2/cache/junit/junit/jars/junit-4.10.jar:/home/rajesh/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.1.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 1.700796643 s[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mAll newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m
